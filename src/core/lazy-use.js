@@ -2,42 +2,42 @@ import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import {
-  Notification,
-  Popover,
-  Switch,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Message,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Footer,
-  Menu,
-  Submenu,
-  MenuItem,
-  MenuItemGroup,
-  Button,
-  Image,
-  Loading,
-  Row,
-  Col,
-  MessageBox,
-  Form,
-  FormItem,
-  Input,
-  Divider,
-  Link,
-  Tooltip,
-  Autocomplete,
-  Scrollbar,
-  Avatar,
-  Radio,
-  RadioGroup,
-  Progress,
-  Dialog,
-  Checkbox
+    Notification,
+    Popover,
+    Switch,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Message,
+    Container,
+    Header,
+    Aside,
+    Main,
+    Footer,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
+    Button,
+    Image,
+    Loading,
+    Row,
+    Col,
+    MessageBox,
+    Form,
+    FormItem,
+    Input,
+    Divider,
+    Link,
+    Tooltip,
+    Autocomplete,
+    Scrollbar,
+    Avatar,
+    Radio,
+    RadioGroup,
+    Progress,
+    Dialog,
+    Checkbox
 } from 'element-ui'
 
 Vue.use(Popover)
@@ -88,9 +88,9 @@ Vue.use(Contextmenu)
 import BaiduMap from 'vue-baidu-map'
 
 Vue.use(BaiduMap, {
-  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: 'Q47kDECgU9ROIGiWnyXldH0hL9IVhXxt'
+    // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+    ak: 'Q47kDECgU9ROIGiWnyXldH0hL9IVhXxt'
 })
 
 process.env.NODE_ENV !== 'production' &&
-  console.warn('[Lumen-IM] NOTICE: element-ui use lazy-load.')
+    console.warn('[PIM] NOTICE: element-ui use lazy-load.')
