@@ -108,12 +108,13 @@ const Talk = {
           if (code !== 200) return
 
           context.commit('SET_TALK_ITEMS', {
-            items: data.map(item => formateTalkItem(item)),
+            items: data.items.map(item => formateTalkItem(item)),
           })
-          
+
           context.commit('SET_LOAD_STATUS', 3)
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log('exception', e)
           context.commit('SET_LOAD_STATUS', 4)
         })
     },

@@ -57,6 +57,7 @@
 </template>
 <script>
 import { ServeUpdatePassword } from '@/api/user'
+import md5 from 'js-md5'
 
 export default {
   name: 'UserEditPassword',
@@ -129,8 +130,8 @@ export default {
     changePassword() {
       this.loading = true
       ServeUpdatePassword({
-        old_password: this.form.old_password,
-        new_password: this.form.new_password,
+        old_password: md5(this.form.old_password),
+        new_password: md5(this.form.new_password),
       })
         .then(res => {
           if (res.code == 200) {

@@ -71,6 +71,7 @@ import { isMobile } from '@/utils/validate'
 import SmsLock from '@/plugins/sms-lock'
 import { ServeUpdateMobile } from '@/api/user'
 import { ServeSendVerifyCode } from '@/api/common'
+import md5 from 'js-md5'
 
 export default {
   name: 'UserEditMobile',
@@ -200,7 +201,7 @@ export default {
       ServeUpdateMobile({
         mobile: this.form.username,
         sms_code: this.form.sms_code,
-        password: this.form.password,
+        password: md5(this.form.password),
       })
         .then(res => {
           if (res.code == 200) {

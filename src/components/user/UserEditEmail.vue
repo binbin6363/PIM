@@ -70,6 +70,7 @@ import SmsLock from '@/plugins/sms-lock'
 import { ServeUpdateEmail } from '@/api/user'
 import { ServeSendEmailCode } from '@/api/common'
 import { isEmail } from '@/utils/validate'
+import md5 from 'js-md5'
 
 export default {
   name: 'UserEditEmail',
@@ -168,7 +169,7 @@ export default {
       ServeUpdateEmail({
         email: this.form.email,
         email_code: this.form.sms_code,
-        password: this.form.password,
+        password: md5(this.form.password),
       })
         .then(res => {
           if (res.code == 200) {

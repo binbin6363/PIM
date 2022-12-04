@@ -294,6 +294,7 @@ import {
   ServeRevokeRecords,
   ServeSendTalkText,
 } from '@/api/chat'
+import TalkEvent from '@/im-server/event/talk'
 
 export default {
   name: 'TalkEditorPanel',
@@ -412,11 +413,13 @@ export default {
         receiver_id: parseInt(this.params.receiver_id),
         talk_type: parseInt(this.params.talk_type),
         text: content,
-      }).then(() => {
+      }).then((data) => {
         this.$store.commit('UPDATE_TALK_ITEM', {
           index_name: this.index_name,
           draft_text: '',
         })
+
+        new TalkEvent(data.data.content).handle()
       })
     },
 

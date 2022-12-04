@@ -89,6 +89,7 @@ import { ServeForgetPassword } from '@/api/auth'
 import { ServeSendVerifyCode } from '@/api/common'
 import { isMobile } from '@/utils/validate'
 import SmsLock from '@/plugins/sms-lock'
+import md5 from 'js-md5'
 
 export default {
   name: 'ForgetPasswordPage',
@@ -180,7 +181,7 @@ export default {
     forgetAccount() {
       ServeForgetPassword({
         mobile: this.form.username,
-        password: this.form.password,
+        password: md5(this.form.password),
         sms_code: this.form.sms_code,
       })
         .then(res => {

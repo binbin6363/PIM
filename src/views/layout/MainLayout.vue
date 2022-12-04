@@ -104,11 +104,6 @@
       <source src="@/assets/image/1701.mp3" type="audio/mp3" />
     </audio>
 
-    <!-- 打赏组件(自行删除) -->
-    <RewardModule />
-
-    <!-- 广告组件(自行删除) -->
-    <AbsModule />
   </div>
 </template>
 <script>

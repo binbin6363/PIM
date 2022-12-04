@@ -6,7 +6,7 @@
         <el-form-item prop="username">
           <el-input
             v-model="form.username"
-            placeholder="手机号"
+            placeholder="账号名"
             class="cuborder-radius"
             maxlength="11"
             @keyup.enter.native="onSubmit('form')"
@@ -65,6 +65,7 @@
 <script>
 import { setToken } from '@/utils/auth'
 import { ServeLogin } from '@/api/auth'
+import md5 from 'js-md5'
 
 export default {
   data() {
@@ -106,7 +107,7 @@ export default {
     login() {
       ServeLogin({
         mobile: this.form.username,
-        password: this.form.password,
+        password: md5(this.form.password),
         platform: 'web',
       })
         .then(res => {
@@ -125,7 +126,7 @@ export default {
 
             this.toLink('/')
             
-            this.showNotice()
+            //this.showNotice()
           } else {
             this.$notify.info({
               title: '提示',

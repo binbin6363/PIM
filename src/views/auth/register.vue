@@ -3,10 +3,10 @@
     <div class="header">账号注册</div>
     <div class="main">
       <el-form ref="form" :model="form" :rules="rules">
-        <el-form-item prop="nickname">
+        <el-form-item prop="username">
           <el-input
-            v-model="form.nickname"
-            placeholder="用户昵称"
+            v-model="form.username"
+            placeholder="账号名"
             class="cuborder-radius"
             maxlength="11"
             @keyup.enter.native="onSubmit('form')"
@@ -32,6 +32,7 @@
         </el-form-item>
         <el-form-item prop="username">
           <el-input
+            v-if="1==0"
             v-model="form.username"
             placeholder="手机号"
             class="cuborder-radius"
@@ -41,6 +42,7 @@
         </el-form-item>
         <el-form-item prop="sms_code">
           <el-input
+            v-if="1==0"
             v-model="form.sms_code"
             placeholder="验证码(随意填写)"
             class="cuborder-radius"
@@ -49,6 +51,7 @@
             @keyup.enter.native="onSubmit('form')"
           />
 
+          <div v-if="1==0">
           <div v-if="smsLock" class="send-code-btn send-sms-disable">
             正在发送 ...
           </div>
@@ -62,6 +65,7 @@
           <div v-else class="send-code-btn send-sms-disable">
             重新发送({{ smsLockObj.time }}s)
           </div>
+        </div>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -100,6 +104,7 @@ import { ServeSendVerifyCode } from '@/api/common'
 import { ServeRegister } from '@/api/auth'
 import { isMobile } from '@/utils/validate'
 import SmsLock from '@/plugins/sms-lock'
+import md5 from 'js-md5'
 
 export default {
   data() {
@@ -129,26 +134,26 @@ export default {
     return {
       registerLoading: false,
       form: {
-        nickname: '',
+        // nickname: '',
         username: '',
         password: '',
         password2: '',
-        sms_code: '',
+        // sms_code: '',
       },
       rules: {
-        nickname: [
-          {
-            required: true,
-            message: '用户昵称不能为空!',
-            trigger: 'blur',
-          },
-        ],
         username: [
           {
-            validator: validateMobile,
+            required: true,
+            message: '账号名不能为空!',
             trigger: 'blur',
           },
         ],
+        // username: [
+        //   {
+        //     validator: validateMobile,
+        //     trigger: 'blur',
+        //   },
+        // ],
         password: [
           {
             required: true,
@@ -162,13 +167,13 @@ export default {
             trigger: 'blur',
           },
         ],
-        sms_code: [
-          {
-            required: true,
-            message: '验证码不能为空!',
-            trigger: 'blur',
-          },
-        ],
+        // sms_code: [
+        //   {
+        //     required: true,
+        //     message: '验证码不能为空!',
+        //     trigger: 'blur',
+        //   },
+        // ],
       },
 
       smsLock: false,
@@ -200,10 +205,10 @@ export default {
 
     register() {
       ServeRegister({
-        nickname: this.form.nickname,
+        nickname: "",//this.form.nickname,
         mobile: this.form.username,
-        password: this.form.password,
-        sms_code: this.form.sms_code,
+        password: md5(this.form.password),
+        sms_code: "",//this.form.sms_code,
         platform: 'web',
       })
         .then(res => {
