@@ -410,6 +410,7 @@ export default {
     // 回车键发送消息回调事件
     submitSendMesage(content) {
       ServeSendTalkText({
+        client_msg_id: (new Date()).valueOf(),
         receiver_id: parseInt(this.params.receiver_id),
         talk_type: parseInt(this.params.talk_type),
         text: content,
