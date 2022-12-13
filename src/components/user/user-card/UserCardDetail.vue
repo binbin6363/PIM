@@ -29,9 +29,9 @@
         </div>
 
         <div class="card-rows no-select">
-          <div class="card-row">
+          <div v-show="0" class="card-row">
             <label>手机</label>
-            <span>{{ detail.mobile | mobile }}</span>
+            <span>{{ detail.mobile | mobile}}</span>
           </div>
           <div class="card-row">
             <label>昵称</label>
