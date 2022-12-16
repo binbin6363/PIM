@@ -34,7 +34,10 @@ export default {
       this.time = beautifyTime(this.value)
 
       let time = new Date().getTime()
-      let inTime = new Date(this.value.replace(/-/g, '/')).getTime()
+      let inTime = time
+      if (this.value  != "undefined") {
+        inTime = new Date(this.value.replace(/-/g, '/')).getTime()
+      }
 
       clearInterval(this.timeout)
 

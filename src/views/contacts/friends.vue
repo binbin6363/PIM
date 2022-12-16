@@ -90,7 +90,7 @@ export default {
       ServeGetContacts().then(res => {
         if (res.code == 200) {
           this.status = 1
-          this.items = res.data
+          this.items = res.data.rows
         }
       })
     },
