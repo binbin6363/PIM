@@ -371,6 +371,10 @@ export default {
 
           let records = data.record_id == 0 ? [] : this.records.items
 
+          if (res.data.rows == null) {
+            this.records.loadStatus = 2
+            return
+          }
           records.push(...res.data.rows)
 
           this.records.items = records
