@@ -286,7 +286,7 @@ import PanelHeader from './PanelHeader'
 import PanelToolbar from './PanelToolbar'
 import SocketInstance from '@/im-server/socket-instance'
 import { SvgMentionDown } from '@/core/icons'
-import { formateTime, parseTime, copyTextToClipboard, downloadIamgeBase64 } from '@/utils/functions'
+import { formateTime, parseTime, copyTextToClipboard } from '@/utils/functions'
 import {
   ServeTalkRecords,
   ServeForwardRecords,
@@ -295,6 +295,7 @@ import {
   ServeSendTalkText,
 } from '@/api/chat'
 import TalkEvent from '@/im-server/event/talk'
+import { DownImgBase64 } from  '@/api/upload'
 
 export default {
   name: 'TalkEditorPanel',
@@ -628,7 +629,7 @@ export default {
       }
 
       // 不存在就要下载
-      img = downloadIamgeBase64(avatarUrl)
+      img = DownImgBase64(avatarUrl)
       localStorage.setItem(path, img)
       return img
     },
