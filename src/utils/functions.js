@@ -1,6 +1,7 @@
 /** 公共方法类 */
 import { getToken } from '@/utils/auth'
 import config from '@/config/config'
+import axios from 'axios'
 
 /**
  * 人性化时间显示
