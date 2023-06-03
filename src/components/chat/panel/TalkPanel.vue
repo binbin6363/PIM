@@ -621,15 +621,18 @@ export default {
     },
 
     fetchAvatar(avatarUrl) {
-      const url = new URL(avatarUrl);
-      let path = url.pathname;
+      const url = new URL(avatarUrl)
+      let path = url.pathname
+      console.log('path:', path)
       let img = localStorage.getItem(path)
       if (img) {
+        console.log('use cache img:', img)
         return img
       }
 
       // 不存在就要下载
-      img = DownImgBase64({"url":avatarUrl})
+      console.log('download avatar, url:', avatarUrl)
+      img = DownImgBase64({url:avatarUrl})
       localStorage.setItem(path, img)
       return img
     },
