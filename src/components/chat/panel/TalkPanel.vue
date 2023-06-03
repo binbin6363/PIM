@@ -629,7 +629,7 @@ export default {
       }
 
       // 不存在就要下载
-      img = DownImgBase64(avatarUrl)
+      img = DownImgBase64({"url":avatarUrl})
       localStorage.setItem(path, img)
       return img
     },
