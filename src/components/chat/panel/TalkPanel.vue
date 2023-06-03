@@ -68,7 +68,7 @@
                   <el-avatar
                     class="pointer"
                     :size="30"
-                    :src="item.avatar"
+                    :src="fetchAvatar(item.avatar)"
                     @click.native="catFriendDetail(item.user_id)"
                   />
                 </aside>
@@ -295,6 +295,7 @@ import {
   ServeSendTalkText,
 } from '@/api/chat'
 import TalkEvent from '@/im-server/event/talk'
+import { DownloadImg } from '@/utils/img'
 
 export default {
   name: 'TalkEditorPanel',
@@ -617,6 +618,19 @@ export default {
     // 查看好友用户信息
     catFriendDetail(value) {
       this.$user(value)
+    },
+
+    fetchAvatar(avatarUrl) {
+      const url = new URL(avatarUrl);
+      let path = url.pathname;
+      let img = localStorage.getItem(path)
+      if (img) {
+        return img
+      }
+
+      // 不存在就要下载
+      img = DownloadImg(avatarUrl)
+      localStorage.setItem(path, img)
     },
 
     // 撤回消息
