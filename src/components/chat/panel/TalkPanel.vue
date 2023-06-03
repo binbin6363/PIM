@@ -635,8 +635,7 @@ export default {
       DownImgBase64({url:avatarUrl})
       .then(({ code, data }) => {
           if (code !== 200) return
-          console.log('download ok, data:', data)
-          localStorage.setItem(path, "data:image/png;base64,"+data)          
+          localStorage.setItem(path, "data:image/png;base64,"+data.data)          
         })
         .catch((e) => {
           console.log('exception', e)
