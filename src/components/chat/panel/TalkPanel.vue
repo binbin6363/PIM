@@ -632,8 +632,17 @@ export default {
 
       // 不存在就要下载
       console.log('download avatar, url:', avatarUrl)
-      img = DownImgBase64({url:avatarUrl})
-      localStorage.setItem(path, img)
+      DownImgBase64({url:avatarUrl})
+      .then(({ code, data }) => {
+          if (code !== 200) return
+          log.console('download ok, data:', data)
+          localStorage.setItem(path, "data:image/png;base64,"+data)          
+        })
+        .catch((e) => {
+          console.log('exception', e)
+          context.commit('SET_LOAD_STATUS', 4)
+        })
+
       return img
     },
 
