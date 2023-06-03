@@ -620,29 +620,26 @@ export default {
       this.$user(value)
     },
 
+    // 从后台下载头像base64数据，缓存在localcache
     fetchAvatar(avatarUrl) {
       const url = new URL(avatarUrl)
       let path = url.pathname
-      console.log('path:', path)
       let img = localStorage.getItem(path)
       if (img) {
-        console.log('use cache img:', img)
         return img
       }
 
-      // 不存在就要下载
-      console.log('download avatar, url:', avatarUrl)
+      // 不存在就要下载。下载失败则交给浏览器自行下载
       DownImgBase64({url:avatarUrl})
       .then(({ code, data }) => {
-          if (code !== 200) return
+          if (code !== 200) return avatarUrl
           localStorage.setItem(path, "data:image/png;base64,"+data.data)          
         })
         .catch((e) => {
-          console.log('exception', e)
-          context.commit('SET_LOAD_STATUS', 4)
+          console.log('fetchAvatar exception', e)
         })
 
-      return img
+      return localStorage.getItem(path)
     },
 
     // 撤回消息
