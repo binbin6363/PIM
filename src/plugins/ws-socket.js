@@ -54,6 +54,7 @@ class WsSocket {
     this.events = Object.assign({}, this.defaultEvent, events)
 
     this.on('connect', data => {
+      console.log("receive connect data:", data)
       this.config.heartbeat.pingInterval = data.ping_interval * 1000
       this.config.heartbeat.pingTimeout = data.ping_timeout * 1000
       this.heartbeat()
