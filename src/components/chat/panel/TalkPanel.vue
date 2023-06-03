@@ -631,6 +631,7 @@ export default {
       // 不存在就要下载
       img = DownloadImg(avatarUrl)
       localStorage.setItem(path, img)
+      return img
     },
 
     // 撤回消息
