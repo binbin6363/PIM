@@ -107,6 +107,10 @@ const Talk = {
         .then(({ code, data }) => {
           if (code !== 200) return
 
+          if (!data.items) {
+            return
+          }
+
           context.commit('SET_TALK_ITEMS', {
             items: data.items.map(item => formateTalkItem(item)),
           })

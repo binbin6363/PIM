@@ -5,6 +5,7 @@ import NewMessageNotify from '@/components/notify/NewMessageNotify'
 import { ServeClearTalkUnreadNum, ServeCreateTalkList } from '@/api/chat'
 import { formateTalkItem, findTalkIndex, toTalk } from '@/utils/talk'
 import { parseTime } from '@/utils/functions'
+import SocketInstance from '@/im-server/socket-instance'
 
 /**
  * 好友状态事件
@@ -116,7 +117,16 @@ class Talk extends Base {
 
     // 判断会话列表是否存在，不存在则创建
     if (findTalkIndex(this.getIndexName()) == -1) {
-      return this.addTalkItem()
+      this.addTalkItem()
+      SocketInstance.send({
+        event: 'talk_ack',
+        data:{
+          sender_id: this.sender_id,
+          receiver_id: this.receiver_id,
+          id: this.resource.id,
+        }
+      })
+      return
     }
 
     let isTrue = this.isTalk(this.talk_type, this.receiver_id, this.sender_id)
@@ -127,6 +137,14 @@ class Talk extends Base {
     } else {
       this.updateTalkItem()
     }
+    SocketInstance.send({
+      event: 'talk_ack',
+      data:{
+        sender_id: this.sender_id,
+        receiver_id: this.receiver_id,
+        id: this.resource.id,
+      }
+    })
   }
 
   /**

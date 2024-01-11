@@ -622,6 +622,9 @@ export default {
 
     // 从后台下载头像base64数据，缓存在localcache
     fetchAvatar(avatarUrl) {
+      if (!avatarUrl) {
+        return null
+      }
       const url = new URL(avatarUrl)
       let path = url.pathname
       let img = localStorage.getItem(path)

@@ -53,6 +53,7 @@ export function formateTalkItem(params) {
   Object.assign(options, params)
   
   options.index_name = `${options.talk_type}_${options.receiver_id}`
+  // options.avatar = `/avatar/${options.receiver_id}/avatar.png` // todo: 用户资料应该统一本地缓存起来
 
   return options
 }

@@ -19,6 +19,10 @@
 -- Table structure for table `contacts`
 --
 
+-- create database db_pim DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+use db_pim;
+set names utf8;
+
 DROP TABLE IF EXISTS `contacts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -63,7 +67,7 @@ CREATE TABLE `conversations` (
   `conversation_status` int unsigned NOT NULL COMMENT '01',
   `unread` int unsigned NOT NULL COMMENT 'uid',
   `msg_digest` varchar(64) NOT NULL,
-  `msgid` bigint unsigned NOT NULL COMMENT 'ID',
+  `sequence` bigint unsigned NOT NULL COMMENT 'ID',
   `create_time` int unsigned NOT NULL,
   `update_time` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
