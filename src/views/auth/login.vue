@@ -1,6 +1,6 @@
 <template>
   <div id="login-box">
-    <div class="header">快捷登录</div>
+    <div class="header">账号登录</div>
     <div class="main">
       <el-form ref="form" :model="form" :rules="rules">
         <el-form-item prop="username">
@@ -55,8 +55,8 @@
           </el-divider>
         </p>
         <el-form-item class="preview-account">
-          <p>预览账号:18798272054 / 密码: admin123</p>
-          <p>预览账号:18798272055 / 密码: admin123</p>
+          <p>预览账号:guest1 / 密码: guest123</p>
+          <p>预览账号:guest2 / 密码: guest123</p>
         </el-form-item>
       </el-form>
     </div>

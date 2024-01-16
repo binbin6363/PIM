@@ -140,7 +140,7 @@
                     <!-- 文件 - 图片消息 -->
                     <image-message
                       v-else-if="
-                        record.msg_type == 2 && record.file.type == 1
+                        record.msg_type == 2
                       "
                       :src="record.file.url"
                     />
@@ -148,7 +148,7 @@
                     <!-- 文件 - 音频消息 -->
                     <audio-message
                       v-else-if="
-                        record.msg_type == 2 && record.file.type == 2
+                        record.msg_type == 6
                       "
                       :src="record.file.url"
                     />
@@ -156,7 +156,7 @@
                     <!-- 文件 - 视频消息 -->
                     <video-message
                       v-else-if="
-                        record.msg_type == 2 && record.file.type == 3
+                        record.msg_type == 7
                       "
                       :src="record.file.url"
                     />
@@ -164,7 +164,7 @@
                     <!-- 文件 - 其它格式文件 -->
                     <file-message
                       v-else-if="
-                        record.msg_type == 2 && record.file.type == 4
+                        record.msg_type == 9
                       "
                       :file="record.file"
                       :record_id="record.id"

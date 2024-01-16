@@ -338,6 +338,7 @@ export default {
       fileData.append('talk_type', talk_type)
       fileData.append('receiver_id', receiver_id)
       fileData.append('image', this.imageViewer.file)
+      fileData.append('client_msg_id', (new Date()).valueOf())
 
       let ref = this.$refs.imageViewer
 

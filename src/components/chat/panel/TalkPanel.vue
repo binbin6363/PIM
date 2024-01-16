@@ -107,28 +107,28 @@
 
                     <!-- 图片消息 -->
                     <image-message
-                      v-else-if="item.msg_type == 2 && item.file.type == 1"
+                      v-else-if="item.msg_type == 2"
                       :src="item.file.url"
                       @contextmenu.native="onCopy(idx, item, $event)"
                     />
 
                     <!-- 音频文件预留 -->
                     <audio-message
-                      v-else-if="item.msg_type == 2 && item.file.type == 2"
+                      v-else-if="item.msg_type == 6"
                       :src="item.file.url"
                       @contextmenu.native="onCopy(idx, item, $event)"
                     />
 
                     <!-- 视频文件预留 -->
                     <video-message
-                      v-else-if="item.msg_type == 2 && item.file.type == 3"
+                      v-else-if="item.msg_type == 7"
                       :src="item.file.url"
                       @contextmenu.native="onCopy(idx, item, $event)"
                     />
 
                     <!-- 文件消息 -->
                     <file-message
-                      v-else-if="item.msg_type == 2 && item.file.type == 4"
+                      v-else-if="item.msg_type == 9"
                       :file="item.file"
                       :record_id="item.id"
                       @contextmenu.native="onCopy(idx, item, $event)"
@@ -797,7 +797,7 @@ export default {
       })
 
       // 判断是否是图片消息
-      if (item.msg_type == 2 && item.file.type == 1) {
+      if (item.msg_type == 2) {
         menus.push({
           label: '收藏',
           icon: 'el-icon-picture',

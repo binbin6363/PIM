@@ -102,6 +102,7 @@ CREATE TABLE `group_messages` (
   `client_msgid` bigint unsigned NOT NULL,
   `create_time` int unsigned NOT NULL,
   `update_time` int unsigned NOT NULL,
+  `media` varchar(4096) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `key_client_msgid` (`senderid`,`client_msgid`),
   UNIQUE KEY `key_id` (`msgid`)
@@ -136,6 +137,7 @@ CREATE TABLE `single_messages` (
   `client_msgid` bigint unsigned NOT NULL,
   `create_time` int unsigned NOT NULL,
   `update_time` int unsigned NOT NULL,
+  `media` varchar(4096) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `key_client_msgid` (`senderid`,`client_msgid`),
   UNIQUE KEY `key_id` (`msgid`)
