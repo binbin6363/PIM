@@ -361,6 +361,13 @@ export function removeClass(ele, cls) {
 export function imgZoom(src, width = 200) {
   const info = getImageInfo(src)
 
+  if (info.width == 0) {
+    return {
+      width: "200px",
+      height: "200px",
+    }
+  }
+
   if (info.width < width) {
     return {
       width: `${info.width}px`,
