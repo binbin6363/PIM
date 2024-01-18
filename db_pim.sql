@@ -200,3 +200,53 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-12-11 22:08:44
+
+
+
+
+DROP TABLE IF EXISTS `articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `articles` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `uid` bigint unsigned NOT NULL COMMENT 'UID',
+  `class_id` bigint unsigned NOT NULL COMMENT '文章分类ID',
+  `title` varchar(64) NOT NULL COMMENT '文章标题',
+  `content` text NOT NULL COMMENT '文章html格式内容',
+  `md_content` text NOT NULL COMMENT '文章md格式内容',
+  `create_time` int unsigned NOT NULL,
+  `update_time` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `key_uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TABLE IF EXISTS `classes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `classes` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '文章分类ID',
+  `uid` bigint unsigned NOT NULL COMMENT 'UID',
+  `name` varchar(64) NOT NULL COMMENT '文章分类标题',
+  `flag` int NOT NULL default 0 COMMENT '文章分类标识，0默认',
+  `create_time` int unsigned NOT NULL,
+  `update_time` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `key_uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tags` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'tag ID',
+  `uid` bigint unsigned NOT NULL COMMENT 'UID',
+  `name` varchar(64) NOT NULL COMMENT '文章tag标题',
+  `flag` int NOT NULL default 0 COMMENT '文章tag标识，0默认',
+  `create_time` int unsigned NOT NULL,
+  `update_time` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `key_uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;

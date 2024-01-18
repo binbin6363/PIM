@@ -90,8 +90,7 @@ class Talk extends Base {
 
     switch (this.resource.msg_type) {
       case 2:
-        let file_type = this.resource.file.file_type
-        text = file_type == 1 ? '[图片消息]' : '[文件消息]'
+        text = '[图片消息]'
         break
       case 3:
         text = '[会话记录]'
@@ -101,6 +100,9 @@ class Talk extends Base {
         break
       case 8:
         text = '[登录提醒]'
+        break
+      case 9:
+        text = '[文件消息]'
         break
     }
 

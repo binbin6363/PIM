@@ -464,7 +464,10 @@ export default {
         this.loadNoteList()
       }
 
-      let class_id = this.menus[i1].submenus[i2].id
+      let class_id = 0
+      if (Array.isArray(this.menus[i1].submenus) && this.menus[i1].submenus.length) {
+        class_id = this.menus[i1].submenus[i2].id
+      }
 
       this.$refs.refNotePreview.open(0, true, class_id)
     },

@@ -148,6 +148,7 @@ import MeEditorLocation from './MeEditorLocation'
 import TalkCodeBlock from '@/components/chat/TalkCodeBlock'
 import { getPasteImgs, getDragPasteImg } from '@/utils/editor'
 import { findTalk } from '@/utils/talk'
+import TalkEvent from '@/im-server/event/talk'
 
 import {
   ServeSendTalkCodeBlock,
@@ -250,13 +251,13 @@ export default {
       if (e.keyCode == 13 && e.shiftKey == false && this.editorText != '') {
         let currentTime = new Date().getTime()
 
-        if (this.sendtime > 0) {
-          // 判断 1秒内只能发送一条消息
-          if (currentTime - this.sendtime < this.interval) {
-            e.preventDefault()
-            return false
-          }
-        }
+        // if (this.sendtime > 0) {
+        //   // 判断 1秒内只能发送一条消息
+        //   if (currentTime - this.sendtime < this.interval) {
+        //     e.preventDefault()
+        //     return false
+        //   }
+        // }
 
         this.$emit('send', this.editorText)
         this.editorText = ''
@@ -347,6 +348,7 @@ export default {
           ref.loading = false
           if (res.code == 200) {
             ref.closeBox()
+            new TalkEvent(res.data.content).handle()
           } else {
             this.$notify({
               title: '友情提示',

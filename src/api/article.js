@@ -78,7 +78,7 @@ export const ServeArticleClassSort = data => {
 
 // 合并笔记分类服务接口
 export const ServeMergeArticleClass = data => {
-  return post('/api/v1/note/article/merge', data)
+  return post('/api/v1/note/class/merge', data)
 }
 
 // -------- 笔记标签相关 --------
