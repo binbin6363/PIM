@@ -214,6 +214,7 @@ CREATE TABLE `articles` (
   `title` varchar(64) NOT NULL COMMENT '文章标题',
   `content` text NOT NULL COMMENT '文章html格式内容',
   `md_content` text NOT NULL COMMENT '文章md格式内容',
+  `status` int unsigned NOT NULL COMMENT '文章状态，0正常，1进入回收站，2彻底删除',
   `create_time` int unsigned NOT NULL,
   `update_time` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
